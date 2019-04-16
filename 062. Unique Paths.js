@@ -49,7 +49,7 @@ var uniquePaths = function (m, n) {
     // uniquePathsRec(0, 1);
     // return sum; 
 
-    let board = new Array(n).fill(0).map(arr => new Array(m).fill(0));
+    let board = new Array(n).fill(0).map(_ => new Array(m).fill(0));
 
     for (let col = 0; col < m; col++) {
         for (let row = 0; row < n; row++) {
