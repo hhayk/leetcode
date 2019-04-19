@@ -39,7 +39,7 @@ var fizzBuzz = function (n) {
         if (ii % 15 == 0) return "FizzBuzz";
         else if (ii % 5 == 0) return "Buzz";
         else if (ii % 3 == 0) return "Fizz";
-        else return ii;
+        else return ii.toString();
     });
 };
 
