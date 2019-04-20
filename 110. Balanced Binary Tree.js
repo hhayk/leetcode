@@ -51,13 +51,13 @@ function TreeNode(val) {
 var isBalanced = function(root) {
     if (!root) return true;
 
-    let diff = Math.abs(isBalancedRec(root.left) - isBalancedRec(root.right));
+    let diff = Math.abs(treeSize(root.left) - treeSize(root.right));
     return diff < 2 && isBalanced(root.left) && isBalanced(root.right);   
 };
 
-var isBalancedRec = function(root) {
+var treeSize = function(root) {
     if (!root) return 0;
-    return 1 + Math.max(isBalancedRec(root.left), isBalancedRec(root.right));
+    return 1 + Math.max(treeSize(root.left), treeSize(root.right));
 }
 
 {
