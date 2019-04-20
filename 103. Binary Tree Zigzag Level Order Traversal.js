@@ -1,6 +1,6 @@
 /*
 
-Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).
+Given a binary tree, return the zigzag level order traversal of its nodes' values. (ie, from left to right, then right to left for the next level and alternate between).
 
 For example:
 Given binary tree [3,9,20,null,null,15,7],
@@ -9,12 +9,12 @@ Given binary tree [3,9,20,null,null,15,7],
   9  20
     /  \
    15   7
-return its level order traversal as:
-    [
-        [3],
-        [9,20],
-        [15,7]
-    ]
+return its zigzag level order traversal as:
+[
+  [3],
+  [20,9],
+  [15,7]
+]
 
 */
 
@@ -34,7 +34,7 @@ function TreeNode(val) {
  * @param {TreeNode} root
  * @return {number[][]}
  */
-var levelOrder = function (root) {
+var zigzagLevelOrder = function (root) {
     if (!root) return [];
 
     let acc = [];
@@ -47,7 +47,8 @@ var levelOrder = function (root) {
         let level = tuple[1];
 
         if (!acc[level]) acc[level] = [];
-        acc[level].push(node.val);
+        if (level % 2 == 0) acc[level].push(node.val);
+        else acc[level].unshift(node.val);
 
         if (node.left) stack.push([node.left, level + 1]);
         if (node.right) stack.push([node.right, level + 1]);
@@ -63,5 +64,5 @@ var levelOrder = function (root) {
     node.right.left = new TreeNode(15);
     node.right.right = new TreeNode(7);
 
-    console.log(levelOrder(node));
+    console.log(zigzagLevelOrder(node));
 }
