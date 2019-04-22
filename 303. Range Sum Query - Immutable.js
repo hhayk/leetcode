@@ -28,7 +28,6 @@ var NumArray = function (nums) {
     }
 
     this.sum = sum;
-    console.log(sum)
 };
 
 /** 
