@@ -26,38 +26,21 @@ Example:
 var exist = function (board, word) {
     let rows = board.length;
     let cols = board[0].length;
+    let temp = Array(rows).fill('.').map(_ => Array(cols).fill('.'));
 
-    let search = (row, col, dir, idx) => {
-        let ch = board[row][col];
-        let wh = word[idx];
-
+    let search = (row, col, idx) => {
         if (idx == word.length) return true;
-        if (ch == wh) {
-            let u = row - 1;
-            let d = row + 1;
-            let l = col - 1;
-            let r = col + 1;
+        if (row < 0 || col < 0 || row >= rows || col >= cols || temp[row][col] != '.' || board[row][col] != word.charAt(idx)) return false;
 
-            let ub = dir == "DOWN" || u < 0 ? false : search(u, col, "UP", idx + 1);
-            let db = dir == "UP" || d >= rows ? false : search(d, col, "DOWN", idx + 1);
-            let lb = dir == "RIGHT" || l < 0 ? false : search(row, l, "LEFT", idx + 1);
-            let rb = dir == "LEFT" || r >= cols ? false : search(row, r, "RIGHT", idx + 1);
+        temp[row][col] = board[row][col];
+        let res = search(row + 1, col, idx + 1) || search(row - 1, col, idx + 1) || search(row, col + 1, idx + 1) || search(row, col - 1, idx + 1);
+        temp[row][col] = '.';
+        return res;
+    }
 
-            return ub || db || lb || rb;
-        } else return false;
-    };
-
-    for (var row = 0; row < rows; row++) {
+    for (let row = 0; row < rows; row++) {
         for (let col = 0; col < cols; col++) {
-            let ch = board[row][col];
-            let wh = word[0];
-
-            if (ch == wh && word.length == 1) return true;
-            if (ch == wh) {
-                let dir = row == rows - 1 ? "UP" : "DOWN";
-                let found = search(row, col, dir, 0);
-                if (found) return true;
-            }
+            if (search(row, col, 0)) return true;
         }
     }
 
@@ -72,8 +55,9 @@ let board =
     ]
 
 console.log(exist(board, "ABCCED"));
+console.log(exist(board, "ABCCED"));
 console.log(exist(board, "SEE"));
 console.log(exist(board, "ABCB"));
 console.log(exist(board, "ECB"));
 console.log(exist([['a']], "a"));
-console.log(exist([["a","a"]], "aa"));
+// console.log(exist([["a", "a"]], "aa"));
