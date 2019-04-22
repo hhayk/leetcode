@@ -43,8 +43,7 @@ var levelOrder = function (root) {
     stack.push([root, 0]);
     while (stack.length > 0) {
         let tuple = stack.shift();
-        let node = tuple[0];
-        let level = tuple[1];
+        let [node, level] = tuple;
 
         if (!acc[level]) acc[level] = [];
         acc[level].push(node.val);
