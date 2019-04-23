@@ -45,6 +45,7 @@ Example 3:
  * @return {number}
  */
 var eraseOverlapIntervals = function (intervals) {
+    if (intervals.length == 0) return 0;
     intervals.sort(([a0, a1], [b0, b1]) => a0 - b0);
 
     let sum = 0;
