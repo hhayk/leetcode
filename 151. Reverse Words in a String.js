@@ -35,7 +35,6 @@ You need to reduce multiple spaces between two words to a single space in the re
  * @return {string}
  */
 var reverseWords = function (s) {
-    console.log(s.split(" "))
     return s.split(" ").filter(s => s.length).reverse().join(" ");
 };
 
