@@ -49,7 +49,7 @@ RandomizedSet.prototype.insert = function (val) {
     let hasVal = this.map.has(val);
     if (!hasVal) this.map.set(val, val);
 
-    return hasVal;
+    return !hasVal;
 };
 
 /**
