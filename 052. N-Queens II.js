@@ -64,7 +64,7 @@ var totalNQueens = function (n) {
     }
 
     let board = new Array(n).fill('.').map(arr => new Array(n).fill('.'));
-    solveNQueensRec(0, board, []);
+    solveNQueensRec(0, board);
     return cnt;
 };
 
