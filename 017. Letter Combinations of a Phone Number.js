@@ -24,7 +24,7 @@ Although the above answer is in lexicographical order, your answer could be in a
 var letterCombinations = function (digits) {
     if (digits.length == 0) return [];
 
-    let map = new Map([[1, ""], [2, "abc"], [3, "def"], [4, "ghi"], [5, "jkl"], [6, "mno"], [7, "pqrs"], [8, "tuv"], [9, "wxya"]]);
+    let map = new Map([[1, ""], [2, "abc"], [3, "def"], [4, "ghi"], [5, "jkl"], [6, "mno"], [7, "pqrs"], [8, "tuv"], [9, "wxyz"]]);
     let letters = [...digits].map(d => map.get(Number(d)));
 
     let ret = [];
