@@ -30,6 +30,8 @@ Example 2:
  * @return {number}
  */
 var numIslands = function (grid) {
+    if (grid.length == 0) return 0;
+
     let rows = grid.length;
     let cols = grid[0].length;
     let visited = Array(rows).fill(false).map(_ => Array(cols).fill(false));
@@ -55,7 +57,6 @@ var numIslands = function (grid) {
             }
         }
     }
-
 
     return islands;
 };
