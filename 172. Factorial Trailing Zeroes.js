@@ -40,7 +40,6 @@ var trailingZeroes = function (n) {
 
     while (cur <= n) {
         total += Math.floor(n / cur);
-        console.log(total)
         cur *= 5;
     }
 
