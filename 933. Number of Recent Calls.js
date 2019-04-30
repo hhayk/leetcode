@@ -36,9 +36,9 @@ var RecentCounter = function () {
  * @return {number}
  */
 RecentCounter.prototype.ping = function (t) {
-    this.queue.push(t)
-    while (this.queue.length && this.queue[this.queue.length - 1] < t - 3000) {
-        this.queue.pop();
+    this.queue.push(t);
+    while (this.queue.length && this.queue[0] < t - 3000) {
+        this.queue.shift();
     }
     return this.queue.length;
 };
