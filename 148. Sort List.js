@@ -48,7 +48,7 @@ var sortList = function (head) {
         }
 
         maxLen = len;
-        if (i++ > Math.log2(maxLen) + 1) break;
+        if (i++ > maxLen) break;
     }
 
     return head;
