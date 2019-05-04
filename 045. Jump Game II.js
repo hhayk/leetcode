@@ -54,7 +54,6 @@ var jump = function (nums) {
             cnt++;
             end = tmp;
         }
-        console.log(cnt, tmp, end)
     }
 
     return cnt;
