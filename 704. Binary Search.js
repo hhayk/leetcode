@@ -32,6 +32,7 @@ The value of each element in nums will be in the range [-9999, 9999].
 var search = function (nums, target) {
     let left = 0;
     let right = nums.length - 1;
+    
     while (left <= right) {
         let mid = Math.floor((left + right) / 2);
         let t = nums[mid];
