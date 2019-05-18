@@ -49,9 +49,7 @@ var getMinimumDifference = function (root) {
     }
 
     getMinimumDifferenceRec(root);
-    arr = [12, 8, 16, 4];
     arr.sort((a, b) => a - b);
-    console.log(arr)
 
     let min = Number.MAX_VALUE;
     for (let i = 1; i < arr.length; i++) {
