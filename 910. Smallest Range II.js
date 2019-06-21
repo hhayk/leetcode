@@ -44,8 +44,8 @@ var smallestRangeII = function (A, K) {
     let res = A[len - 1] - A[0];
 
     for (let i = 0; i < len - 1; i++) {
-        let hi = Math.max(A[i] + K, A[len - 1] - K);
         let lo = Math.min(A[i + 1] - K, A[0] + K);
+        let hi = Math.max(A[i] + K, A[len - 1] - K);
         res = Math.min(res, hi - lo);
     }
 
