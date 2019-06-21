@@ -24,10 +24,45 @@ The arr parameter had been changed to an array of integers (instead of a list of
  * @return {number[]}
  */
 var findClosestElements = function (arr, k, x) {
-    return arr
-        .sort((a, b) => a == b ? a - b : Math.abs(a - x) - Math.abs(b - x))
-        .slice(0, k)
-        .sort((a, b) => a - b);
+    let findPivot = (left, right) => {
+        if (arr[right] <= x) return right;
+        if (arr[left] > x) return left;
+
+        let mid = Math.floor((left + right) / 2);
+        if (arr[mid] <= x && arr[mid + 1] > x) return mid;
+
+        return arr[mid] < x ? findPivot(mid + 1, right) : findPivot(left, mid - 1);
+    }
+
+    let len = arr.length;
+    let left = findPivot(0, len - 1);
+    let right = left + 1;
+    let cnt = 0;
+    let ret = [];
+
+    while (arr[left] == x && cnt < k && left > 0) {
+        ret.push(arr[left--]);
+        cnt++;
+    }
+
+    while (left >= 0 && right < len && cnt++ < k) {
+        if (x - arr[left] <= arr[right] - x) {
+            ret.push(arr[left--]);
+        } else {
+            ret.push(arr[right++]);
+        }
+    }
+
+    while (cnt < k && left >= 0) {
+        ret.push(arr[left--]);
+        cnt++;
+    }
+    while (cnt < k && right < len) {
+        ret.push(arr[right++]);
+        cnt++;
+    }
+
+    return ret.sort((a, b) => a - b);
 };
 
 console.log(findClosestElements([1, 2, 3, 4, 5], 4, 3));
