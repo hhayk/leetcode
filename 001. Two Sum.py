@@ -17,12 +17,11 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        map = {}
-
+        dict = {}
         for index, value in enumerate(nums):
-            if target - value in map:
-                return [map[target - value], index]
-            map[value] = index
+            if target - value in dict:
+                return [dict[target - value], index]
+            dict[value] = index
 
 
 print(Solution().twoSum([2, 7, 11, 15], 9))
